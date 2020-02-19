@@ -1,24 +1,16 @@
-# README
+# Bookers2_phase2_Debug
+phase2の応用課題について実装したアプリケーションです。
+以下の機能について、バグを仕込んでいるので、デバッグしてください。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# デバッグ内容
+- 非同期いいね
+- 非同期コメント
+- 非同期フォロー
+- jpostal, jp_prefecture
+- action_cable
+- メール送信
+- wheneverによるバッジ処理
+- action_cableによるチャット機能
 
-Things you may want to cover:
+# 各機能詳細
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
