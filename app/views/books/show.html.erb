@@ -9,7 +9,7 @@
 
   <div class='col-xs-9'>
 		<h2>Book detail</h2>
-		<table class='table'>
+		<table class='book__table table'>
 		  <tr>
         <td><%= link_to(@book.user) do %>
           <%= attachment_image_tag(@book.user, :profile_image, :fill, 100, 100, fallback: "no-image-icon.jpg") %><br>
@@ -21,6 +21,7 @@
         <td class=<%= "table__favorite--" +@book.id.to_s %>>
           <%= render 'favorites/book', book: @book, user: current_user%>
         </td>
+        <td>コメント数: <%= @book.book_comments.count %></td>
         <% if @book.user == current_user %>
           <td><%= link_to 'Edit', edit_book_path(@book), class: "btn-sm btn-success edit_book_#{@book.id}" %></td>
           <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_book_#{@book.id}"%></td>
@@ -28,5 +29,12 @@
       </tr>
     </table>
 
+    <%= form_with(model: [@book, @comment], data:{remote: true}) do |f|%>
+      <%= f.text_area :body %>
+      <%= f.submit "送信", class: "btn btn-primary", id: "comment__textarea" %>
+    <% end %>
+    <div class="comment__table">
+      <%= render 'book_comments/table', book_comments: @book.book_comments%>
+    </div>
   </div>
 </div>
