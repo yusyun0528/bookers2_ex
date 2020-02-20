@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  get 'book_comments/create'
-  get 'book_comments/destroy'
 	devise_for :users
-  resources :users,only: [:show,:edit,:update,:index]
+
+  resources :users,only: [:show,:edit,:update,:index] do
+    member do
+      get 'followers'
+      get 'followings'
+    end
+    resource :relationships, only: [:create, :destroy]
+  end
+  
   resources :books do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create]

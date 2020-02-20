@@ -13,6 +13,14 @@ class UsersController < ApplicationController
     @book = Book.new
   end
 
+  def followings
+    @user = User.find(params[:id])
+  end
+
+  def followers
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = User.find(params[:id])
   end
