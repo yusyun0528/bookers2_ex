@@ -72,3 +72,6 @@ gem "jp_prefecture"
 gem "geocoder"
 
 gem "dotenv-rails"
+
+# cron
+gem 'whenever', require: false
