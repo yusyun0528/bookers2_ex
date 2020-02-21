@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
   # POST /books/:book_id/favorites
   # POST /favorites.json
   def create

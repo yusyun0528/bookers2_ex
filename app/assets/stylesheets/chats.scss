@@ -1,0 +1,22 @@
+// Place all the styles related to the chats controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.message{
+  @mixin template {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;  
+  }
+  
+  &--mine {
+    @include template;
+    text-align: right;
+  }
+
+  &--yours {
+    @include template;
+    text-align: left;
+  }
+}

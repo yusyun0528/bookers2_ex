@@ -1,0 +1,10 @@
+
+<% if chat.user == current_user%>
+  <div class="message--mine">
+    <%= chat.body%>
+  </div>
+<% else %>
+  <div class="message-yours">
+    <%= chat.body %>
+  </div>
+<% end %>

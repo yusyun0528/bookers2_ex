@@ -1,0 +1,6 @@
+<h2 id='room' data-room="<%= @room.id %>" data-user="<%= current_user.id%>"><%= @user.name%>とのDM</h2>
+<input id="chat__input" class="form-control"/>
+
+<% @room.chats.each do |chat| %>
+  <%= render partial: "chats/message", locals: {chat: chat, current_user: current_user} %>
+<% end %>

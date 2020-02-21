@@ -12,7 +12,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    ThanksMailer.with(user: resource).welcome.deliver_now
+    # ThanksMailer.with(user: resource).welcome.deliver_now
   end
 
   # GET /resource/edit
