@@ -57,13 +57,13 @@ class User < ApplicationRecord
 
   # chat_roomの整理
   def create_or_find_room_by(user_id_array)
-    user_id_array.append(self.id).map!(&:to_i)
+    user_id_array.append(self.id).map!(&:to_i).sort!
     if self.rooms == []
       room = Room.create
       user_id_array.each{|uid| room.user_rooms.create(user_id: uid)}
       return room
     else
-      found_rooms = self.rooms.select{|r| user_id_array == (r.user_rooms.pluck(:user_id) | user_id_array)}
+      found_rooms = self.rooms.select{|r| user_id_array == (r.user_rooms.pluck(:user_id) & user_id_array)}
       if found_rooms.count < 1
         room = Room.create
         user_id_array.each{|uid| room.user_rooms.create(user_id: uid)}
