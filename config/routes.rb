@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   }
 
   resources :users,only: [:show,:edit,:update,:index] do
-    resource :chats, only: [:show]
     member do
       get 'followers'
       get 'followings'

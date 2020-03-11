@@ -15,31 +15,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.text_field :postal_code, class: "postal_code" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :prefecture_code %><br />
-    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {}, class: "prefecture_code" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state, class: "state" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city, class: "city" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :street %><br />
-    <%= f.text_field :street, class: "street" %>
-  </div>
-
-  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -58,18 +33,3 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
-
-<script>
-$(function() {
-  $('#user_postal_code').jpostal({
-    postcode : [
-      '#user_postal_code'
-    ],
-    address : {
-      '#user_prefecture_code'  : '%3',
-      '#user_state'  : '%4',
-      '#user_city'  : '%5'
-    }
-  });
-});
-</script>
