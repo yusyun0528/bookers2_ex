@@ -1,4 +1,4 @@
-# Bookers2_phase2_Debug
+# Bookers2_phase2_Debug   
 phase2の応用課題について実装したアプリケーションです。
 以下の機能について、バグを仕込んでいるので、デバッグしてください。
 
