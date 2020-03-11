@@ -7,9 +7,6 @@ class User < ApplicationRecord
   has_many :books
   has_many :favorites
   has_many :book_comments
-  has_many :user_rooms
-  has_many :rooms, through: :user_rooms
-  has_many :chats
   validates :name, presence: true, length: {maximum: 10, minimum: 2}
   validates :introduction, length: {maximum: 50}
   
@@ -38,22 +35,4 @@ class User < ApplicationRecord
     end
   end
 
-  # chat_roomの整理
-  def create_or_find_room_by(user_id_array)
-    user_id_array.append(self.id).map!(&:to_i).sort!
-    if self.rooms == []
-      room = Room.create
-      user_id_array.each{|uid| room.user_rooms.create(user_id: uid)}
-      return room
-    else
-      found_rooms = self.rooms.select{|r| user_id_array == (r.user_rooms.pluck(:user_id) & user_id_array)}
-      if found_rooms.count < 1
-        room = Room.create
-        user_id_array.each{|uid| room.user_rooms.create(user_id: uid)}
-        return room 
-      else
-        return found_rooms[0]
-      end
-    end
-  end
 end 
