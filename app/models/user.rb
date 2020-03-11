@@ -12,24 +12,7 @@ class User < ApplicationRecord
   has_many :chats
   validates :name, presence: true, length: {maximum: 10, minimum: 2}
   validates :introduction, length: {maximum: 50}
-  validates :postal_code, presence: true
-  validates :prefecture_code, presence: true
-  validates :state, presence: true
-  validates :city, presence: true
-  validates :street, presence: true
-
-  # jp_prefectureをUserモデルにinclude
-  include JpPrefecture
-  jp_prefecture :prefecture_code
-
-  # geocoderにより、保存・更新時に住所から経度・緯度データを生成
-  geocoded_by :full_address
-  after_validation :geocode
-
-  def full_address
-    prefecture.name + state + city + street
-  end
-
+  
   # フォロワー
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followee_id'
   has_many :followers, through: :reverse_of_relationships, source: :follower

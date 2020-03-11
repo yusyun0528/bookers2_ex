@@ -67,11 +67,5 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 
-# 住所検索、地図用のGem
-gem "jp_prefecture"
-gem "geocoder"
-
-gem "dotenv-rails"
-
 # cron
 gem 'whenever', require: false
