@@ -67,5 +67,4 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 
-# cron
-gem 'whenever', require: false
+gem "dotenv-rails"
