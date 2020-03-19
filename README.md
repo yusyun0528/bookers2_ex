@@ -8,6 +8,5 @@ phase2の応用課題について実装したアプリケーションです。
 - フォロー機能
 
 # 各機能詳細
-各機能詳細については、https://docbase.io/posts/964693/sharing/3177afd1-16b5-4930-9428-cef8232c7921
-Docbaseを確認してください。
+各機能詳細については、[Docbase](https://docbase.io/posts/964693/sharing/3177afd1-16b5-4930-9428-cef8232c7921)を確認してください。
 応用課題3~6が該当内容です。
