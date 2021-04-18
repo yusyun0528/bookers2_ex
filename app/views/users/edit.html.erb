@@ -1,6 +1,6 @@
 <h2>User info</h2>
 
-<%= form_for(@user) do |f| %>
+<%= form_with model:@user, local:true do |f| %>
   <%= render 'layouts/errors', obj: @user %>
 
   <div class="field">
