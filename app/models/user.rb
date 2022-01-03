@@ -12,11 +12,11 @@ class User < ApplicationRecord
   
   # フォロワー
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followee_id'
-  has_many :followers, source: :follower
+  has_many :followers, through: :reverse_of_relationships, source: :followee
   
   # フォローしている人
-  has_many :relationships, foreign_key: "follower_id"
-  has_many :followings, source: :followee
+  has_many :relationships, class_name: 'Relationship', foreign_key: "follower_id"
+  has_many :followings, through: :relationships, source: :follower
   
   def following?(another_user)
     self.followings.include?(another_user)
