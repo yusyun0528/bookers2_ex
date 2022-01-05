@@ -24,13 +24,13 @@ class User < ApplicationRecord
 
   def follow(another_user)
     unless self == another_user
-      self.relationships.find_or_create_by(followee_id: another_user.id)
+      self.relationships.find_or_create_by(followee_id: another_user.id, follower_id: self.id)
     end
   end
   
   def unfollow(another_user)
     unless self == another_user
-      relationship = self.relationships.find(followee_id: another_user.id)
+      relationship = self.relationships.find_by(followee_id: another_user.id, follower_id: self.id)
       relationship.destroy if relationship
     end
   end
