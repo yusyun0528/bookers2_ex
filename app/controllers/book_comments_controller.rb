@@ -4,7 +4,7 @@ class BookCommentsController < ApplicationController
     @comment = current_user.book_comments.new(comment_params)
     @comment.book_id = params[:book_id]
     @comment.save
-    redirect_back(fallback_location: root_path)
+    render :create
   end
 
   def destroy
@@ -12,7 +12,7 @@ class BookCommentsController < ApplicationController
     if @comment.user_id == current_user.id
       @comment.destroy
     end
-    redirect_back(fallback_location: root_path)
+    render :destroy
   end
 
   private
