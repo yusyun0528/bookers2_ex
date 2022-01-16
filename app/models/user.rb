@@ -18,6 +18,13 @@ class User < ApplicationRecord
   has_many :relationships, class_name: 'Relationship', foreign_key: "follower_id"
   has_many :followings, through: :relationships, source: :followee
   
+  
+  has_many :direct_massages, class_name: 'DirectMassage', foreign_key: "sender_id"
+  has_many :senders, through: :direct_massages, source: :sender
+  
+  has_many :reverse_of_direct_massages, class_name: 'DirectMassage', foreign_key: "receiver_id"
+  has_many :receivers, through: :direct_massages, source: :receiver
+  
   def following?(another_user)
     self.followings.include?(another_user)
   end
