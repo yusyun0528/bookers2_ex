@@ -9,4 +9,8 @@ class Book < ApplicationRecord
   def favorited_by?(user)
     Favorite.where(user_id: user.id, book_id: self.id).exists?
   end
+  
+  def favorite_sort
+    self.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
+  end
 end

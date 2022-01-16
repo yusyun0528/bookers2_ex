@@ -1,1 +1,2 @@
+$('.col-xs-9').html("<%= j(render 'books/index', books: @books) %>")
 $('.table__favorite--'+<%= @favorite.book_id%>).html("<%= j(render 'favorites/book',  book: @favorite.book, user: @favorite.user ) %>")
