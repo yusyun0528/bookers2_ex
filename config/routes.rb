@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     member do
       get 'followers'
       get 'followings'
+      get 'direct_massages'
     end
     resource :relationships, only: [:create, :destroy]
+    resources :direct_massages, only: [:create]
   end
   
   resources :books do

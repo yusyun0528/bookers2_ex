@@ -1,0 +1,10 @@
+<h1><%= @user.name %>さんとのチャット</h1>
+
+<% @massages.each do |massage| %>
+<%= massage.body %> <br>
+<% end %>
+
+<%= form_with(model: [@user, @massage], local: :true) do |f| %>
+<%= f.text_area :body %>
+<%= f.submit %>
+<% end %>

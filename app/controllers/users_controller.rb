@@ -32,6 +32,17 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+    
+  end
+  
+  def direct_massages
+    @user = User.find(params[:id])
+    unless current_user.following?(@user) and @user.following?(current_user)
+      redirect_to request.referer
+    end
+    
+    @massage = DirectMassage.new
+    @massages = DirectMassage.where(sender_id: current_user.id, receiver_id: @user.id).or(DirectMassage.where(sender_id: @user.id, receiver_id: current_user.id))
   end
 
   private
