@@ -2,13 +2,13 @@ class BooksController < ApplicationController
   before_action :authenticate_user!,only: [:create,:edit,:update,:destroy,:index]
 
   def index
-    #@books = Book.find(Favorite.group(:book_id).order("count(book_id) desc").pluck(:book_id))
     @books = Book.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
     @book = Book.new
   end
 
   def show
     @book = Book.find(params[:id])
+    impressionist(@book, nil,unique: [:session_hash.to_s])
     @comment = BookComment.new
   end
 
