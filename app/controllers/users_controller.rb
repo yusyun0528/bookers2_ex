@@ -9,6 +9,11 @@ class UsersController < ApplicationController
     today = Date.today
     @today_books = @books.where(created_at: today.in_time_zone.all_day)
     @yesterday_books = @books.where(created_at: (today-1).in_time_zone.all_day)
+    @books_tow_days_ago = @books.where(created_at: (today-2).in_time_zone.all_day)
+    @books_three_days_ago = @books.where(created_at: (today-3).in_time_zone.all_day)
+    @books_four_days_ago = @books.where(created_at: (today-4).in_time_zone.all_day)
+    @books_five_days_ago = @books.where(created_at: (today-5).in_time_zone.all_day)
+    @books_six_days_ago = @books.where(created_at: (today-6).in_time_zone.all_day)
     @weekly_books = @books.where(created_at: today-6..today+1)
     @last_weekly_books = @books.where(created_at: today-13..today-6)
     if @today_books.exists? && @yesterday_books.exists?
