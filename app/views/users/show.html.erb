@@ -73,5 +73,23 @@
         </tr>
       </tbody>
     </table>
+    
+    <canvas id="myChart"></canvas>
+<script>
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ["6日前", "5日前", "4日前", "3日前", "2日前", "1日前", "今日"],
+    datasets: [{
+      label: '投稿した本の数',
+      backgroundColor: "rgba(0,0,80,0.4)",
+      borderColor: "rgba(0,0,80,1)",
+      data: [<% @books_six_days_ago.count %>, <% @books_five_days_ago.count %>,<% @books_four_days_ago.count %>, <% @books_three_days_ago.count %>, 
+      <% @books_tow_days_ago.count %>, <% @yesterday_books.count %>, 3]
+    }]
+  }
+});
+</script>
   </div>
 </div>
