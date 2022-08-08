@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     else
       @last_week_to_this_week = 0
     end
+    @weekly_count = [@books_six_days_ago.count, @books_five_days_ago.count, @books_four_days_ago.count, @books_three_days_ago.count, @books_tow_days_ago.count, @yesterday_books.count, @today_books.count]
   end
 
   def index

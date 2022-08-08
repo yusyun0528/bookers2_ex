@@ -13,40 +13,7 @@
     <h2>Books</h2>
 
     <%= render 'books/index',books: @books %>
-    <h2>投稿数の前日比・前週比</h2>
-    <table class='table'>
-      <thead>
-        <tr>
-          <th>今日の投稿数</th>
-          <th>前日の投稿数</th>
-          <th>前日比</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= @today_books.count %></td>
-          <td><%= @yesterday_books.count %></td>
-          <td><%= @yesterday_to_today %>%</td>
-        </tr>
-      </tbody>
-    </table>
-    
-    <table class='table'>
-      <thead>
-        <tr>
-          <th>今週の投稿数</th>
-          <th>前週の投稿数</th>
-          <th>前週比</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= @weekly_books.count %></td>
-          <td><%= @last_weekly_books.count %></td>
-          <td><%= @last_week_to_this_week %>%</td>
-        </tr>
-      </tbody>
-    </table>
+  
     
     <h2>7日間分の投稿数</h2>
     <table class='table'>
@@ -85,8 +52,7 @@ var myChart = new Chart(ctx, {
       label: '投稿した本の数',
       backgroundColor: "rgba(0,0,80,0.4)",
       borderColor: "rgba(0,0,80,1)",
-      data: [<% @books_six_days_ago.count %>, <% @books_five_days_ago.count %>,<% @books_four_days_ago.count %>, <% @books_three_days_ago.count %>, 
-      <% @books_tow_days_ago.count %>, <% @yesterday_books.count %>, 3]
+      data: <%= @weekly_count %>
     }]
   }
 });

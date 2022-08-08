@@ -70,3 +70,4 @@ gem 'jquery-rails'
 gem "dotenv-rails"
 
 gem 'chart-js-rails', '~> 0.1.4'
+gem 'gon', '~> 6.2.0'
