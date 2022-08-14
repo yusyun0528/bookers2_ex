@@ -41,6 +41,11 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_url
   end
+  
+  def search
+    user = User.find(params[:user_id])
+    @books = user.books.where(created_at: params[:created_at].in_time_zone.all_day)
+  end
 
   private
     def book_params
@@ -52,5 +57,7 @@ class BooksController < ApplicationController
         redirect_to books_path
       end
     end
+    
+    
 
 end
