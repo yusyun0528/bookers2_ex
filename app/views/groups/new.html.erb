@@ -1,0 +1,24 @@
+    <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>Create Group</h2>
+      <%= form_with model: @group, local: true do |f| %>
+            <div class="form-group">
+                <p>グループ名</p>
+                <%= f.text_field :name %>
+            </div>
+            <div class="form-group">
+                <p>紹介文</p>
+                <%= f.text_area :introduction %>
+            </div>
+            <div class="form-group">
+                <p>グループ画像</p>
+                    <%= f.attachment_field :image, class: "image" %>
+                
+            </div>
+            <div class="form-group">
+                <%= f.submit 'Create Group', class: "btn btn-primary" %>
+            </div>
+            
+            <% end %>
+</div>
+</div>
