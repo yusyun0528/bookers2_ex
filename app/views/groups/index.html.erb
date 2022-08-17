@@ -1,3 +1,39 @@
-<% @groups.each do |group| %>
-<%= group.name %>
-<% end %>
+<div class="row">
+    <div class='col-xs-3'>
+    <h2>User info</h2>
+    <%= render 'users/info', user: current_user %>
+    <h2>New book</h2>
+    <%= render 'books/form', book: Book.new %>
+    </div>
+    <div class='col-xs-9'>
+        <h2>Groups</h2>
+        <table class='table table-hover table-inverse'>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>グループ名</th>
+                    <th>紹介文</th>
+                    <th colspan="3"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @groups.each do |group| %>
+                <tr>
+                    <td><%= attachment_image_tag(group, :image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+                    <td>
+                        <%= group.name %>
+                    </td>
+                    <td>
+                        <%= group.introduction %>
+                    </td>
+                    <% if group.owner?(current_user) %>
+                    <td>
+                        <%= link_to 'Edit', edit_group_path(group), class: "btn btn-success" %>
+                    </td>
+                    <% end %>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
