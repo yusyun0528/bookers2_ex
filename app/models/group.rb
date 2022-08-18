@@ -4,4 +4,9 @@ class Group < ApplicationRecord
     def owner?(user)
         owner_id == user.id
     end
+    
+    def member?(user)
+        group_users.exists?(user_id: user.id)
+        
+    end
 end

@@ -11,15 +11,19 @@ class GroupsController < ApplicationController
         group.owner_id = current_user.id
         group.save
         group_user = GroupUser.new(user_id: current_user.id, group_id: group.id)
-        group_user.save
+        group_user.save!
         redirect_to groups_path
     end 
     
     def edit
         @group = Group.find(params[:id])
+        if not @group.owner?(current_user)
+            redirect_to groups_path
+        end
     end
     
     def show
+        @group = Group.find(params[:id])
     end
     
     def update
