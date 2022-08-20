@@ -21,8 +21,11 @@ Rails.application.routes.draw do
   
   resources :groups, only: [:new, :create, :edit, :show, :index, :update] do
     resource :group_users, only: [:create, :destroy]
+    member do
+      get 'mail'
+      post 'send_mail'
+    end
   end
-  
 
   root 'home#top'
   get 'home/about'

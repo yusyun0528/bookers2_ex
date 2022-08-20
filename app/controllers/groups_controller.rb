@@ -32,6 +32,18 @@ class GroupsController < ApplicationController
         redirect_to groups_path
     end
     
+    def mail
+        @group = Group.find(params[:id])
+    end
+    
+    def send_mail
+        group = Group.find(params[:id])
+        @title = params[:title]
+        @content = params[:content]
+        InquiryMailer.send_mail(group,@title,@content).deliver_now
+    end
+    
+    
     private
         def group_params
             params.require(:group).permit(:name, :introduction, :image)

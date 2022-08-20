@@ -35,6 +35,7 @@
                     <% if @group.owner?(current_user) %>
                     
                         <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-success" %>
+                        <%= link_to 'Notice an Event', mail_group_path(@group), class: "btn btn-success" %>
                     <% else %>
                       <% if not @group.member?(current_user) %>
                         <%= link_to 'Join this group', group_group_users_path(@group), method: :post, class: "btn btn-success" %>
