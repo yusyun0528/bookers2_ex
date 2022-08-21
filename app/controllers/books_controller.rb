@@ -48,10 +48,15 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_url
   end
+  
+  def tag_search
+    @tag = params[:tag]
+    @books = Book.where("tag LIKE?","#{@tag}")
+  end
 
   private
     def book_params
-      params.require(:book).permit(:title, :body, :rate)
+      params.require(:book).permit(:title, :body, :rate, :tag)
     end
 
     def screen_user(book)

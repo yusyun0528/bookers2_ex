@@ -12,6 +12,12 @@
     <%= render 'layouts/header' %>
 
   	<div class='body'>
+  	  <div class="search_form">
+  	  <%= form_with url: tag_search_path,method: :get, local: true do |f| %>
+  	  <%= f.text_field :tag %>
+  	  <%= f.submit 'タグ検索' %>
+  	  <% end %>
+  	  </div>
       <div class='container'>
         
         

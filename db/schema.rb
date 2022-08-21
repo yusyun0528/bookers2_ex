@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_21_041446) do
+ActiveRecord::Schema.define(version: 2022_08_21_170548) do
 
   create_table "book_comments", force: :cascade do |t|
     t.integer "book_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2022_08_21_041446) do
     t.integer "user_id"
     t.integer "impressions_count", default: 0
     t.integer "rate"
+    t.string "tag"
   end
 
   create_table "direct_massages", force: :cascade do |t|
