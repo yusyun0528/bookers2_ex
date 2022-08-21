@@ -10,6 +10,19 @@
     <td class=<%= "table__favorite--" +book.id.to_s %>>
       <%= render 'favorites/book', book: book, user: current_user%>
     </td>
+    <td>
+      <div id="star-rate-<%= book.id %>"></div>
+          <script>
+          $('#star-rate-<%= book.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= book.rate %>,
+          });
+          </script>
+    </td>
     <td>コメント数: <%= book.book_comments.count %></td>
     <% if book.user == current_user %>
       <td><%= link_to 'Edit', edit_book_path(book), class: "btn-sm btn-success edit_book_#{book.id}" %></td>
