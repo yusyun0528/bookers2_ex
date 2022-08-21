@@ -2,7 +2,14 @@ class BooksController < ApplicationController
   before_action :authenticate_user!,only: [:create,:edit,:update,:destroy,:index]
 
   def index
-    @books = Book.all
+    if params[:order] == 'dsec'
+      @books = Book.all.order(id: 'DESC')
+    elsif params[:order] == 'rate'
+      @books = Book.all.order(rate: 'DESC')
+    else
+      @books = Book.all
+    end
+    
     @book = Book.new
   end
 
